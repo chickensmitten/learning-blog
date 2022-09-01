@@ -1,7 +1,8 @@
 /* This example requires Tailwind CSS v2.0+ */
-import { Fragment } from 'react'
-import { Popover, Transition } from '@headlessui/react'
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+import { Fragment } from 'react';
+import Image from 'next/image';
+import { Popover, Transition } from '@headlessui/react';
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 
 const navigation = [
   { name: 'Product', href: '#' },
@@ -68,11 +69,9 @@ export default function Home() {
                 <div className="flex w-full items-center justify-between md:w-auto">
                   <a href="#">
                     <span className="sr-only">Workflow</span>
-                    <img
-                      className="h-8 w-auto sm:h-10"
-                      src="https://tailwindui.com/img/logos/workflow-mark.svg?color=indigo&shade=600"
-                      alt=""
-                    />
+                    <div className="h-8 w-auto sm:h-10">
+                      <Image src="/images/workflow-mark.svg" alt="Workflow" width={47} height={40} />
+                    </div>
                   </a>
                   <div className="-mr-2 flex items-center md:hidden">
                     <Popover.Button className="inline-flex items-center justify-center rounded-md bg-gray-50 p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
@@ -117,12 +116,8 @@ export default function Home() {
             >
               <div className="overflow-hidden rounded-lg bg-white shadow-md ring-1 ring-black ring-opacity-5">
                 <div className="flex items-center justify-between px-5 pt-4">
-                  <div>
-                    <img
-                      className="h-8 w-auto"
-                      src="https://tailwindui.com/img/logos/workflow-mark.svg?color=indigo&shade=600"
-                      alt=""
-                    />
+                  <div className="h-8 w-auto">
+                    <Image src="/images/workflow-mark.svg" alt="Workflow" width={47} height={40} />
                   </div>
                   <div className="-mr-2">
                     <Popover.Button className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">

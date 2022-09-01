@@ -18,3 +18,11 @@ npx tailwindcss init -p
 
 npm install @headlessui/react @heroicons/react
 ```
+
+added @imports into styles/globals.css
+
+```
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
