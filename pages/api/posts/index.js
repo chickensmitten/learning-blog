@@ -14,6 +14,7 @@ function handler(req, res) {
     [
       {
         id: 1,
+        slug: "velit-placeat-sit-ducimus-non-sed-1",
         subject: 'Velit placeat sit ducimus non sed',
         sender: 'Gloria Roberston',
         time: '1d ago',
@@ -23,6 +24,7 @@ function handler(req, res) {
       },
       {
         id: 2,
+        slug: "velit-placeat-sit-ducimus-non-sed-2",
         subject: 'Velit placeat sit ducimus non sed',
         sender: 'Gloria Roberston',
         time: '1d ago',
@@ -32,6 +34,7 @@ function handler(req, res) {
       },
       {
         id: 3,
+        slug: "velit-placeat-sit-ducimus-non-sed-3",
         subject: 'Velit placeat sit ducimus non sed',
         sender: 'Gloria Roberston',
         time: '1d ago',

@@ -1,5 +1,5 @@
 import Hero from "@components/home-page/hero";
-import AllPosts from "@components/posts";
+import AllPosts from "@components/posts/all-posts";
 import { Fragment } from "react";
 import { getAllPosts } from "./api/posts";
 

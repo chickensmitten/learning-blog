@@ -1,4 +1,4 @@
-import AllPosts from "@components/posts";
+import AllPosts from "@components/posts/all-posts";
 import { getAllPosts } from "@pages/api/posts";
 
 function AllPostsPage({messages}) {
