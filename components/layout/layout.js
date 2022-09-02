@@ -5,7 +5,6 @@ import Navbar from "./navbar";
 
 function Layout(props) {
   const { pathname } = useRouter();
-  console.log(pathname)
   const isNotHomePage = pathname !== "/"
   return (
     <Fragment>
