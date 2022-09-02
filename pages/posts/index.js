@@ -1,4 +1,5 @@
 import AllPosts from "@components/posts";
+import { getAllPosts } from "@pages/api/posts";
 
 function AllPostsPage({messages}) {
   return (
@@ -6,13 +7,14 @@ function AllPostsPage({messages}) {
   );
 }
 
-export async function getServerSideProps() {
-  const resData = await fetch(`${process.env.API_URL}/posts`);
-  const data = await resData.json();
+export async function getStaticProps() {
+  const data = await getAllPosts();
+
   return {
     props: {
       messages: data
-    }
+    },
+    revalidate: 1800
   }
 }
 

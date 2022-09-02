@@ -1,6 +1,7 @@
 import Hero from "@components/home-page/hero";
 import AllPosts from "@components/posts";
 import { Fragment } from "react";
+import { getAllPosts } from "./api/posts";
 
 function Home(props) {
   const messages = props.messages
@@ -12,13 +13,14 @@ function Home(props) {
   )
 }
 
-export async function getServerSideProps() {
-  const resData = await fetch(`${process.env.API_URL}/posts`);
-  const data = await resData.json();
+export async function getStaticProps() {
+  const data = await getAllPosts();
+
   return {
     props: {
       messages: data
-    }
+    },
+    revalidate: 1800
   }
 }
 

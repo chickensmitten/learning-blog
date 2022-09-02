@@ -1,5 +1,11 @@
 // get all posts here
 
+export async function getAllPosts() {
+  const resData = await fetch(`${process.env.API_URL}/posts`);
+  const data = await resData.json();
+  return data;  
+}
+
 function handler(req, res) {
   if (req.method === "POST") {
     res.status(422).json( { message: "Method not available."});
