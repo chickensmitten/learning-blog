@@ -1,20 +1,24 @@
 /* This example requires Tailwind CSS v2.0+ */
-import { Fragment } from 'react'
-import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
-import Image from 'next/image'
-import Link from 'next/link'
+import { Fragment } from "react";
+import { Disclosure, Menu, Transition } from "@headlessui/react";
+import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import ActiveLink from "./shared/ActiveLink";
 
 const navigation = [
-  { name: 'Your Posts', href: 'posts', current: true },
-  { name: 'Create Blog Post', href: 'posts/create', current: false },
-]
+  { name: "Your Posts", href: "/posts" },
+  { name: "Create Blog Post", href: "/posts/create" },
+];
 
 function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
+  return classes.filter(Boolean).join(" ");
 }
 
 function Navbar() {
+  const router = useRouter();
+
   return (
     <Disclosure as="nav" className="bg-gray-800">
       {({ open }) => (
@@ -37,40 +41,45 @@ function Navbar() {
                   <a>
                     <div className="flex flex-shrink-0 items-center">
                       <div className="block h-8 w-auto lg:hidden">
-                        <Image src="/images/mark.svg" alt="Your Company" width="32px" height="32px" />
+                        <Image
+                          src="/images/mark.svg"
+                          alt="Your Company"
+                          width="32px"
+                          height="32px"
+                        />
                       </div>
                       <div className="hidden h-8 w-auto lg:block">
-                        <Image src="/images/mark.svg" alt="Your Company" width="32px" height="32px" />
+                        <Image
+                          src="/images/mark.svg"
+                          alt="Your Company"
+                          width="32px"
+                          height="32px"
+                        />
                       </div>
                     </div>
                   </a>
-                </Link>                
+                </Link>
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
                     {navigation.map((item) => (
-                      <Link key={item.name} href={item.href}>
-                        <a
-                          className={classNames(
-                            item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                            'px-3 py-2 rounded-md text-sm font-medium'
-                          )}
-                          aria-current={item.current ? 'page' : undefined}
-                        >
-                          {item.name}
-                        </a>
-                      </Link>
+                      <ActiveLink key={item.name} title={item.name} href={item.href} />
                     ))}
                   </div>
                 </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-
                 {/* Profile dropdown */}
                 <Menu as="div" className="relative ml-3">
                   <div>
                     <Menu.Button className="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                       <span className="sr-only">Open user menu</span>
-                      <Image className="h-8 w-8 rounded-full" src="/images/profile.avif" alt="Your Profile Pic" width="32px" height="32px" />
+                      <Image
+                        className="h-8 w-8 rounded-full"
+                        src="/images/profile.avif"
+                        alt="Your Profile Pic"
+                        width="32px"
+                        height="32px"
+                      />
                     </Menu.Button>
                   </div>
                   <Transition
@@ -87,7 +96,10 @@ function Navbar() {
                         {({ active }) => (
                           <a
                             href="#"
-                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                            className={classNames(
+                              active ? "bg-gray-100" : "",
+                              "block px-4 py-2 text-sm text-gray-700"
+                            )}
                           >
                             Your Profile
                           </a>
@@ -97,7 +109,10 @@ function Navbar() {
                         {({ active }) => (
                           <a
                             href="#"
-                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                            className={classNames(
+                              active ? "bg-gray-100" : "",
+                              "block px-4 py-2 text-sm text-gray-700"
+                            )}
                           >
                             Settings
                           </a>
@@ -107,7 +122,10 @@ function Navbar() {
                         {({ active }) => (
                           <a
                             href="#"
-                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                            className={classNames(
+                              active ? "bg-gray-100" : "",
+                              "block px-4 py-2 text-sm text-gray-700"
+                            )}
                           >
                             Sign out
                           </a>
@@ -128,10 +146,12 @@ function Navbar() {
                   as="a"
                   href={item.href}
                   className={classNames(
-                    item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                    'block px-3 py-2 rounded-md text-base font-medium'
+                    router.asPath === item.href
+                      ? "bg-gray-900 text-white"
+                      : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                    "block px-3 py-2 rounded-md text-base font-medium"
                   )}
-                  aria-current={item.current ? 'page' : undefined}
+                  aria-current={router.asPath === item.href ? "page" : undefined}
                 >
                   {item.name}
                 </Disclosure.Button>
@@ -141,7 +161,7 @@ function Navbar() {
         </>
       )}
     </Disclosure>
-  )
+  );
 }
 
 export default Navbar;
