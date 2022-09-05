@@ -1,7 +1,19 @@
 import { useState } from "react";
 
 async function sendPostData(postDetails) {
-  console.log(postDetails)
+  const response = await fetch("/api/posts", {
+    method: "POST",
+    body: JSON.stringify(postDetails),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(data.message || "something went wrong");
+  }
 }
 
 function CreatePostForm() {
@@ -21,8 +33,8 @@ function CreatePostForm() {
         preview: enteredPreview,
       });
       clearForm();   
+      console.log("Post created!")
     } catch (error) {
-      clearForm();
       console.log("Error")
     }
   }

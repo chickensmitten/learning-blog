@@ -13,9 +13,11 @@
     "@heroicons/react": "^2.0.10",
     "@tailwindcss/forms": "^0.5.3",
     "@tailwindcss/line-clamp": "^0.4.1",
+    "mongodb": "^4.9.1",
     "next": "12.2.5",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "slugify": "^1.6.5"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.8",
