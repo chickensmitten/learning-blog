@@ -3,10 +3,11 @@ import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import Image from 'next/image'
+import Link from 'next/link'
 
 const navigation = [
-  { name: 'Your Blogs', href: '#', current: true },
-  { name: 'Create Blog Post', href: '#', current: false },
+  { name: 'Your Posts', href: 'posts', current: true },
+  { name: 'Create Blog Post', href: 'posts/create', current: false },
 ]
 
 function classNames(...classes) {
@@ -32,29 +33,32 @@ function Navbar() {
                 </Disclosure.Button>
               </div>
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-                <div className="flex flex-shrink-0 items-center">
-                  <div className="block h-8 w-auto lg:hidden">
-                    <Image src="/images/mark.svg" alt="Your Company" width="32px" height="32px" />
-                  </div>
-                  <div className="hidden h-8 w-auto lg:block">
-                  <Image src="/images/mark.svg" alt="Your Company" width="32px" height="32px" />
-                  </div>
-                  
-                </div>
+                <Link href="/">
+                  <a>
+                    <div className="flex flex-shrink-0 items-center">
+                      <div className="block h-8 w-auto lg:hidden">
+                        <Image src="/images/mark.svg" alt="Your Company" width="32px" height="32px" />
+                      </div>
+                      <div className="hidden h-8 w-auto lg:block">
+                        <Image src="/images/mark.svg" alt="Your Company" width="32px" height="32px" />
+                      </div>
+                    </div>
+                  </a>
+                </Link>                
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
                     {navigation.map((item) => (
-                      <a
-                        key={item.name}
-                        href={item.href}
-                        className={classNames(
-                          item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                          'px-3 py-2 rounded-md text-sm font-medium'
-                        )}
-                        aria-current={item.current ? 'page' : undefined}
-                      >
-                        {item.name}
-                      </a>
+                      <Link key={item.name} href={item.href}>
+                        <a
+                          className={classNames(
+                            item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                            'px-3 py-2 rounded-md text-sm font-medium'
+                          )}
+                          aria-current={item.current ? 'page' : undefined}
+                        >
+                          {item.name}
+                        </a>
+                      </Link>
                     ))}
                   </div>
                 </div>
