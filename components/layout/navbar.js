@@ -4,7 +4,6 @@ import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import ActiveLink from "./shared/ActiveLink";
 
 const navigation = [
@@ -17,7 +16,6 @@ function classNames(...classes) {
 }
 
 function Navbar() {
-  const router = useRouter();
 
   return (
     <Disclosure as="nav" className="bg-gray-800">
@@ -141,19 +139,8 @@ function Navbar() {
           <Disclosure.Panel className="sm:hidden">
             <div className="space-y-1 px-2 pt-2 pb-3">
               {navigation.map((item) => (
-                <Disclosure.Button
-                  key={item.name}
-                  as="a"
-                  href={item.href}
-                  className={classNames(
-                    router.asPath === item.href
-                      ? "bg-gray-900 text-white"
-                      : "text-gray-300 hover:bg-gray-700 hover:text-white",
-                    "block px-3 py-2 rounded-md text-base font-medium"
-                  )}
-                  aria-current={router.asPath === item.href ? "page" : undefined}
-                >
-                  {item.name}
+                <Disclosure.Button key={item.name} as="a" className=" block px-3 py-2 rounded-md text-sm font-medium">
+                  <ActiveLink key={item.name} title={item.name} href={item.href} />
                 </Disclosure.Button>
               ))}
             </div>
