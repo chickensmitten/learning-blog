@@ -5,7 +5,6 @@ import { Fragment } from "react";
 
 
 function PostDetailsPage(props) {
-
   return (
     <Fragment>
       <PostDetails post={props.post} />
@@ -16,9 +15,9 @@ function PostDetailsPage(props) {
 export async function getStaticProps(context) {
   const { params } = context;
   const { slug } = params;
-
+  
   const data = await getPostData(slug);
-  console.log(data)
+
   return {
     props: data,
     revalidate: 1800

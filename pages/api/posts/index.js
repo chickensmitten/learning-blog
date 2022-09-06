@@ -1,6 +1,6 @@
 // get all posts here
 
-import { MongoClient, Timestamp } from "mongodb";
+import { MongoClient } from "mongodb";
 import slugify from "slugify";
 
 export async function getAllPosts() {
