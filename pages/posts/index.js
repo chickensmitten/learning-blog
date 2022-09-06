@@ -1,9 +1,9 @@
 import AllPosts from "@components/posts/all-posts";
 import { getAllPosts } from "@pages/api/posts";
 
-function AllPostsPage({messages}) {
+function AllPostsPage({posts}) {
   return (
-    <AllPosts messages={messages} />
+    <AllPosts posts={posts} />
   );
 }
 
@@ -12,7 +12,7 @@ export async function getStaticProps() {
 
   return {
     props: {
-      messages: data
+      posts: data
     },
     revalidate: 1800
   }

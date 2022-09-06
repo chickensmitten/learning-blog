@@ -19,9 +19,8 @@ import Link from "next/link";
   ```
 */
 
-function AllPosts({messages}) {
-
-
+function AllPosts({posts}) {
+  
   return (
     <div className="grid grid-cols-12">
       <div className="col-start-2 col-span-10">
@@ -31,27 +30,27 @@ function AllPosts({messages}) {
           </h2>
         </div>
         <ul role="list" className="divide-y divide-gray-200 my-8">
-          {messages.map((message) => (
+          {posts.map((post) => (
             <li
-              key={message.id}
+              key={post.id}
               className="relative bg-white py-5 px-4 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 hover:bg-gray-50"
             >
               <div className="flex justify-between space-x-3">
                 <div className="min-w-0 flex-1">
-                  <Link href={`/posts/${message.slug}`}>
+                  <Link href={`/posts/${post.slug}`}>
                     <a className="block focus:outline-none">
                       <span className="absolute inset-0" aria-hidden="true" />
-                      <p className="truncate text-base font-medium text-gray-900">{message.sender}</p>
-                      <p className="truncate text-base text-gray-500">{message.subject}</p>
+                      <p className="truncate text-base font-medium text-gray-900">{post.sender}</p>
+                      <p className="truncate text-base text-gray-500">{post.subject}</p>
                     </a>
                   </Link>
                 </div>
-                <time dateTime={message.datetime} className="flex-shrink-0 whitespace-nowrap text-base text-gray-500">
-                  {message.time}
+                <time dateTime={post.datetime} className="flex-shrink-0 whitespace-nowrap text-base text-gray-500">
+                  {post.time}
                 </time>
               </div>
               <div className="mt-1">
-                <p className="text-base text-gray-600 line-clamp-2">{message.preview}</p>
+                <p className="text-base text-gray-600 line-clamp-2">{post.preview}</p>
               </div>
             </li>
           ))}
