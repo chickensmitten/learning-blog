@@ -8,7 +8,7 @@ function Home(props) {
   return (
     <Fragment>
       <Hero />
-      <AllPosts posts={posts} />    
+      <AllPosts posts={posts} />
     </Fragment>
   )
 }

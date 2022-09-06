@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
 
 async function sendPostData(postDetails) {
   const response = await fetch("/api/posts", {
@@ -33,27 +34,13 @@ function CreatePostForm() {
         preview: enteredPreview,
       });
       clearForm();   
-      console.log("Post created!")
+      toast.success("Post Created Successfully!")
     } catch (error) {
-      console.log("Error")
+      toast.error("Failed to create Post.")
     }
   }
 
   return(
-    /*
-
-      {
-        id: 1,
-        slug: "velit-placeat-sit-ducimus-non-sed-1",
-        subject: 'Velit placeat sit ducimus non sed',
-        sender: 'Gloria Roberston',
-        time: '1d ago',
-        datetime: '2021-01-27T16:35',
-        preview:
-          'Doloremque dolorem maiores assumenda dolorem facilis. Velit vel in a rerum natus facere. Enim rerum eaque qui facilis. Numquam laudantium sed id dolores omnis in. Eos reiciendis deserunt maiores et accusamus quod dolor.',
-      }
-
-    */
     <div className="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
       <div className="text-center my-12">
         <h2 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
@@ -93,6 +80,7 @@ function CreatePostForm() {
                     id="preview"
                     name="preview"
                     rows={10}
+                    required
                     className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                     placeholder="Write something about your post"
                     value={enteredPreview}
@@ -121,6 +109,7 @@ function CreatePostForm() {
           </button>
         </div>
       </form>
+      <ToastContainer />
     </div>    
   )
 }
