@@ -4,11 +4,11 @@ import { Fragment } from "react";
 import { getAllPosts } from "./api/posts";
 
 function Home(props) {
-  const messages = props.messages
+  const posts = props.posts
   return (
     <Fragment>
       <Hero />
-      <AllPosts messages={messages} />    
+      <AllPosts posts={posts} />    
     </Fragment>
   )
 }
@@ -18,7 +18,7 @@ export async function getStaticProps() {
 
   return {
     props: {
-      messages: data
+      posts: data
     },
     revalidate: 1800
   }

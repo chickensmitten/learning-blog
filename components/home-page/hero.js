@@ -3,12 +3,10 @@ import { Fragment } from 'react';
 import Image from 'next/image';
 import { Popover, Transition } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+import Link from 'next/link';
 
 const navigation = [
-  { name: 'Product', href: '#' },
-  { name: 'Features', href: '#' },
-  { name: 'Marketplace', href: '#' },
-  { name: 'Company', href: '#' },
+  { name: 'Posts', href: '/posts' },
 ]
 
 function Hero() {
@@ -83,9 +81,15 @@ function Hero() {
               </div>
               <div className="hidden md:flex md:space-x-10">
                 {navigation.map((item) => (
-                  <a key={item.name} href={item.href} className="font-medium text-gray-500 hover:text-gray-900">
-                    {item.name}
-                  </a>
+                  <Link
+                    key={item.name} 
+                    href={item.href}
+                    >
+                    <a className="font-medium text-gray-500 hover:text-gray-900">
+                      {item.name}
+                    </a>                  
+                  </Link>
+
                 ))}
               </div>
               <div className="hidden md:absolute md:inset-y-0 md:right-0 md:flex md:items-center md:justify-end">
