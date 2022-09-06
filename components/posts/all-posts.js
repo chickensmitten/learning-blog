@@ -2,22 +2,6 @@
 
 import Link from "next/link";
 
-/*
-  This example requires Tailwind CSS v2.0+ 
-  
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/line-clamp'),
-    ],
-  }
-  ```
-*/
 
 function AllPosts({posts}) {
   
@@ -32,7 +16,7 @@ function AllPosts({posts}) {
         <ul role="list" className="divide-y divide-gray-200 my-8">
           {posts.map((post) => (
             <li
-              key={post.id}
+              key={post._id}
               className="relative bg-white py-5 px-4 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 hover:bg-gray-50"
             >
               <div className="flex justify-between space-x-3">
