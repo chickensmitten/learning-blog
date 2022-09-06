@@ -26,3 +26,12 @@ added @imports into styles/globals.css
 @tailwind components;
 @tailwind utilities;
 ```
+
+## Next Learning List
+- nofitications with toastify
+- authentication
+- user profile information
+- Mongoose: forces schema. Will be useful
+- API: axios vs fetch
+- Infinite scrolling for posts pagination: find() with forEach()
+
