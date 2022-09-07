@@ -94,12 +94,14 @@ function Hero() {
               </div>
               <div className="hidden md:absolute md:inset-y-0 md:right-0 md:flex md:items-center md:justify-end">
                 <span className="inline-flex rounded-md shadow">
-                  <a
-                    href="#"
-                    className="inline-flex items-center rounded-md border border-transparent bg-white px-4 py-2 text-base font-medium text-indigo-600 hover:bg-gray-50"
-                  >
-                    Log in
-                  </a>
+                  <Link href="/auth/login">
+                    <a
+                      
+                      className="inline-flex items-center rounded-md border border-transparent bg-white px-4 py-2 text-base font-medium text-indigo-600 hover:bg-gray-50"
+                    >
+                      Log in
+                    </a>
+                  </Link>
                 </span>
               </div>
             </nav>
@@ -141,12 +143,13 @@ function Hero() {
                     </a>
                   ))}
                 </div>
-                <a
-                  href="#"
-                  className="block w-full bg-gray-50 px-5 py-3 text-center font-medium text-indigo-600 hover:bg-gray-100"
-                >
-                  Log in
-                </a>
+                <Link href="/auth/login">
+                  <a
+                    className="block w-full bg-gray-50 px-5 py-3 text-center font-medium text-indigo-600 hover:bg-gray-100"
+                  >
+                    Log in
+                  </a>
+                </Link>
               </div>
             </Popover.Panel>
           </Transition>

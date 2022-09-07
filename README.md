@@ -28,10 +28,14 @@ added @imports into styles/globals.css
 ```
 
 ## Next Learning List
-- nofitications with toastify
+- edit page
 - authentication
+  Google Authentication: https://dev.to/ndom91/adding-authentication-to-an-existing-serverless-next-js-app-in-no-time-with-nextauth-js-192h
+  Magic Link Email Authentication: https://vercel.com/guides/add-auth-to-nextjs-with-magic
+
 - user profile information
 - Mongoose: forces schema. Will be useful
 - API: axios vs fetch
-- Infinite scrolling for posts pagination: find() with forEach()
+- Infinite scrolling for posts pagination: find() with forEach(). limit 2, then iterate
+- find a use case for use effect
 
