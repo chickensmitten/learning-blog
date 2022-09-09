@@ -32,7 +32,6 @@ added @imports into styles/globals.css
 - authentication
   Google Authentication: https://dev.to/ndom91/adding-authentication-to-an-existing-serverless-next-js-app-in-no-time-with-nextauth-js-192h
   Magic Link Email Authentication: https://vercel.com/guides/add-auth-to-nextjs-with-magic
-  - Sign out user
   - Not signed in user cannot create article from api, nor access create article page
   - how to change email
 

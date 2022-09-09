@@ -3,6 +3,7 @@ import AllPosts from "@components/posts/all-posts";
 import { Fragment } from "react";
 import { getAllPosts } from "./api/posts";
 import Head from "next/head";
+import { ToastContainer } from "react-toastify";
 
 function Home(props) {
   const posts = props.posts
@@ -19,7 +20,8 @@ function Home(props) {
         `,
           }}
         />
-      </Head>      
+      </Head>    
+      <ToastContainer />  
       <Hero />
       <AllPosts posts={posts} />
     </Fragment>

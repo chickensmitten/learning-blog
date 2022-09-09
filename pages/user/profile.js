@@ -1,8 +1,8 @@
-import useAuth from "@components/hooks/useAuth";
+
+import UpdateEmail from "@components/user/update-email";
 import { Fragment } from "react";
 
 function Profile() {
-  const { user, loading } = useAuth();
 
   return (
     <Fragment>
@@ -17,8 +17,8 @@ function Profile() {
               <dl className="sm:divide-y sm:divide-gray-200">
                 <div className="py-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:py-5 sm:px-6">
                   <dt className="text-sm font-medium text-gray-500">Email</dt>
-                  <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-                    {user && (loading ? 'Loading...' : user.email)}
+                  <dd className="mt-1 flex text-sm text-gray-900 sm:col-span-2 sm:mt-0">
+                    <UpdateEmail />
                   </dd>
                 </div>
               </dl>
