@@ -10,13 +10,7 @@ function PostDetails(props) {
           className="relative mx-auto h-full max-w-prose text-lg"
           aria-hidden="true"
         >
-          <svg
-            className="absolute top-12 left-full translate-x-32 transform"
-            width={404}
-            height={384}
-            fill="none"
-            viewBox="0 0 404 384"
-          >
+
             <defs>
               <pattern
                 id="74b3fd99-0a6f-4271-bef2-e80eeafdf357"
@@ -41,14 +35,7 @@ function PostDetails(props) {
               height={384}
               fill="url(#74b3fd99-0a6f-4271-bef2-e80eeafdf357)"
             />
-          </svg>
-          <svg
-            className="absolute top-1/2 right-full -translate-y-1/2 -translate-x-32 transform"
-            width={404}
-            height={384}
-            fill="none"
-            viewBox="0 0 404 384"
-          >
+
             <defs>
               <pattern
                 id="f210dbf6-a58d-4871-961e-36d5016a0f49"
@@ -73,14 +60,7 @@ function PostDetails(props) {
               height={384}
               fill="url(#f210dbf6-a58d-4871-961e-36d5016a0f49)"
             />
-          </svg>
-          <svg
-            className="absolute bottom-12 left-full translate-x-32 transform"
-            width={404}
-            height={384}
-            fill="none"
-            viewBox="0 0 404 384"
-          >
+
             <defs>
               <pattern
                 id="d3eb07ae-5182-43e6-857d-35c643af9034"
@@ -105,7 +85,7 @@ function PostDetails(props) {
               height={384}
               fill="url(#d3eb07ae-5182-43e6-857d-35c643af9034)"
             />
-          </svg>
+
         </div>
       </div>
       <div className="relative px-4 sm:px-6 lg:px-8">
@@ -123,19 +103,20 @@ function PostDetails(props) {
         <div className="prose prose-lg prose-indigo mx-auto mt-6 text-gray-500">
           {post.preview}
         </div>
-      </div>
-      <div className="mt-2 flex w-full flex-shrink-0 rounded-md shadow-sm sm:mt-0 sm:ml-3 sm:inline-flex sm:w-auto">
-        <Link
-          href={`/posts/${post.slug}/edit`}
-        >
-          <button
-            type="button"
-            className="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:inline-flex sm:w-auto"
+        <div className="prose prose-lg prose-indigo mx-auto mt-6 text-gray-500">
+          <Link
+            href={`/posts/${post.slug}/edit`}
           >
-            Edit
-          </button>
-        </Link>
+            <button
+              type="button"
+              className="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:inline-flex sm:w-auto"
+            >
+              Edit
+            </button>
+          </Link>
+        </div>        
       </div>
+
     </div>
   );
 }
