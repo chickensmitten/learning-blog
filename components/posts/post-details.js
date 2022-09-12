@@ -1,29 +1,15 @@
-
+import Link from "next/link";
 
 function PostDetails(props) {
   const post = props.post;
 
-  /*
-    This example requires Tailwind CSS v2.0+ 
-    
-    This example requires some changes to your config:
-    
-    ```
-    // tailwind.config.js
-    module.exports = {
-      // ...
-      plugins: [
-        // ...
-        require('@tailwindcss/typography'),
-      ],
-    }
-    ```
-  */
-
   return (
     <div className="relative overflow-hidden bg-white py-16">
       <div className="hidden lg:absolute lg:inset-y-0 lg:block lg:h-full lg:w-full">
-        <div className="relative mx-auto h-full max-w-prose text-lg" aria-hidden="true">
+        <div
+          className="relative mx-auto h-full max-w-prose text-lg"
+          aria-hidden="true"
+        >
           <svg
             className="absolute top-12 left-full translate-x-32 transform"
             width={404}
@@ -40,10 +26,21 @@ function PostDetails(props) {
                 height={20}
                 patternUnits="userSpaceOnUse"
               >
-                <rect x={0} y={0} width={4} height={4} className="text-gray-200" fill="currentColor" />
+                <rect
+                  x={0}
+                  y={0}
+                  width={4}
+                  height={4}
+                  className="text-gray-200"
+                  fill="currentColor"
+                />
               </pattern>
             </defs>
-            <rect width={404} height={384} fill="url(#74b3fd99-0a6f-4271-bef2-e80eeafdf357)" />
+            <rect
+              width={404}
+              height={384}
+              fill="url(#74b3fd99-0a6f-4271-bef2-e80eeafdf357)"
+            />
           </svg>
           <svg
             className="absolute top-1/2 right-full -translate-y-1/2 -translate-x-32 transform"
@@ -61,10 +58,21 @@ function PostDetails(props) {
                 height={20}
                 patternUnits="userSpaceOnUse"
               >
-                <rect x={0} y={0} width={4} height={4} className="text-gray-200" fill="currentColor" />
+                <rect
+                  x={0}
+                  y={0}
+                  width={4}
+                  height={4}
+                  className="text-gray-200"
+                  fill="currentColor"
+                />
               </pattern>
             </defs>
-            <rect width={404} height={384} fill="url(#f210dbf6-a58d-4871-961e-36d5016a0f49)" />
+            <rect
+              width={404}
+              height={384}
+              fill="url(#f210dbf6-a58d-4871-961e-36d5016a0f49)"
+            />
           </svg>
           <svg
             className="absolute bottom-12 left-full translate-x-32 transform"
@@ -82,32 +90,54 @@ function PostDetails(props) {
                 height={20}
                 patternUnits="userSpaceOnUse"
               >
-                <rect x={0} y={0} width={4} height={4} className="text-gray-200" fill="currentColor" />
+                <rect
+                  x={0}
+                  y={0}
+                  width={4}
+                  height={4}
+                  className="text-gray-200"
+                  fill="currentColor"
+                />
               </pattern>
             </defs>
-            <rect width={404} height={384} fill="url(#d3eb07ae-5182-43e6-857d-35c643af9034)" />
+            <rect
+              width={404}
+              height={384}
+              fill="url(#d3eb07ae-5182-43e6-857d-35c643af9034)"
+            />
           </svg>
         </div>
       </div>
       <div className="relative px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-prose text-lg">
           <h1>
-            <span className="block text-center text-lg font-semibold text-indigo-600">Introducing</span>
+            <span className="block text-center text-lg font-semibold text-indigo-600">
+              Introducing
+            </span>
             <span className="mt-2 block text-center text-3xl font-bold leading-8 tracking-tight text-gray-900 sm:text-4xl">
               {post.sender}
             </span>
           </h1>
-          <p className="mt-8 text-xl leading-8 text-gray-500">
-            {post.subject}
-          </p>
+          <p className="mt-8 text-xl leading-8 text-gray-500">{post.subject}</p>
         </div>
         <div className="prose prose-lg prose-indigo mx-auto mt-6 text-gray-500">
           {post.preview}
         </div>
       </div>
+      <div className="mt-2 flex w-full flex-shrink-0 rounded-md shadow-sm sm:mt-0 sm:ml-3 sm:inline-flex sm:w-auto">
+        <Link
+          href={`/posts/${post.slug}/edit`}
+        >
+          <button
+            type="button"
+            className="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:inline-flex sm:w-auto"
+          >
+            Edit
+          </button>
+        </Link>
+      </div>
     </div>
-  )
-
+  );
 }
 
 export default PostDetails;

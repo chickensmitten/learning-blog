@@ -2,12 +2,17 @@ import PostDetails from "@components/posts/post-details";
 import { getPostData } from "@pages/api/posts/[slug]";
 import { getAllPosts } from "@pages/api/posts";
 import { Fragment } from "react";
-
+import { ToastContainer } from "react-toastify";
 
 function PostDetailsPage(props) {
   return (
     <Fragment>
-      <PostDetails post={props.post} />
+      <div className="bg-gray-100">
+        <div className="mx-auto max-w-7xl py-12 sm:px-6 lg:px-8">
+          <ToastContainer />
+          <PostDetails post={props.post} />
+        </div>
+      </div>
     </Fragment>
   );
 }
