@@ -1,4 +1,6 @@
-import { useState } from "react";
+import DropZone from "@components/layout/shared/dropzone";
+import DropZoneShowImages from "@components/layout/shared/dropzone-show-images";
+import { useCallback, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 
 async function sendPostData(postDetails) {
@@ -20,6 +22,21 @@ async function sendPostData(postDetails) {
 function CreatePostForm() {
   const [enteredSubject, setEnteredSubject] = useState("");
   const [enteredPreview, setEnteredPreview] = useState("");
+  const [images, setImages] = useState([]);
+
+  const onDrop = useCallback((acceptedFiles) => {
+    acceptedFiles.map((file, index) => {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        setImages((prevState) => [
+          ...prevState,
+          { id: index, src: e.target.result },
+        ]);
+      };
+      reader.readAsDataURL(file);
+      return file;
+    });
+  }, []);
 
   function clearForm() {
     setEnteredSubject("");
@@ -88,6 +105,9 @@ function CreatePostForm() {
                   />
                 </div>
               </div>
+
+              <DropZone onDrop={onDrop} />
+              <DropZoneShowImages images={images} />
 
             </div>
           </div>
