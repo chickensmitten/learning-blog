@@ -1,53 +1,46 @@
 import { Fragment, useMemo } from "react";
 import { useDropzone } from "react-dropzone";
 
-const focusedStyle = {
-  borderColor: '#2196f3'
-};
-
 const acceptStyle = {
-  borderColor: '#00e676'
+  borderColor: "#00e676",
 };
 
-const rejectStyle = {
-  borderColor: '#ff1744'
-};  
-
-function DropZone({onDrop}) {
-
+function DropZone({ onDrop, accept}) {
+  
   const {
     getRootProps,
     getInputProps,
+    isDragActive,
     acceptedFiles,
-    isDragAccept,
-    isFocused,
-    isDragReject,
   } = useDropzone({
-    accept: 'image/*',
+    accept,
     onDrop,
   });
 
-  const style = useMemo(() => ({
-    ...(isFocused ? focusedStyle : {}),
-    ...(isDragAccept ? acceptStyle : {}),
-    ...(isDragReject ? rejectStyle : {})
-  }), [
-    isFocused,
-    isDragAccept,
-    isDragReject
-  ]);
+  const style = useMemo(
+    () => ({
+      ...(isDragActive ? acceptStyle : {}),
+    }),
+    [isDragActive]
+  );
+
 
   const files = acceptedFiles.map((file) => (
     <li key={file.path}>
       {file.path} - {file.size} bytes
     </li>
-  ));  
-  
+  ));
+
   return (
     <Fragment>
       <div>
-        <label className="block text-sm font-medium text-gray-700">Photos</label>
-        <div className="mt-1 flex justify-center rounded-md border-2 border-dashed border-gray-300 px-6 pt-5 pb-6" {...getRootProps({ style })}>
+        <label className="block text-sm font-medium text-gray-700">
+          Photos
+        </label>
+        <div
+          className="mt-1 flex justify-center rounded-md border-2 border-dashed border-gray-300 px-6 pt-5 pb-6"
+          {...getRootProps({ style })}
+        >
           <div className="space-y-1 text-center">
             <svg
               className="mx-auto h-12 w-12 text-gray-400"
@@ -68,8 +61,22 @@ function DropZone({onDrop}) {
                 htmlFor="file-upload"
                 className="relative cursor-pointer rounded-md bg-white font-medium text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:text-indigo-500"
               >
-                <span>Upload a file</span>
-                <input id="file-upload" name="file-upload" type="file" className="sr-only" {...getInputProps()} />
+                {isDragActive ? (
+                  <span>
+                    Release to drop the files here
+                  </span>
+                ) : (
+                  <span>
+                    Drag and drop some files here, or click to select files
+                  </span>
+                )}
+                <input
+                  id="file-upload"
+                  name="file-upload"
+                  type="file"
+                  className="sr-only"
+                  {...getInputProps()}
+                />
               </label>
               <p className="pl-1">or drag and drop</p>
             </div>
@@ -78,12 +85,10 @@ function DropZone({onDrop}) {
         </div>
         <aside>
           <p>{files}</p>
-        </aside>        
+        </aside>
       </div>
-      
-    </Fragment>    
-  )
-
+    </Fragment>
+  );
 }
 
 export default DropZone;

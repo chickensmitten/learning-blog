@@ -40,7 +40,12 @@ added @imports into styles/globals.css
   - refactor API calls like portfolio-sy
 - Infinite scrolling for posts pagination: find() with forEach(). limit 2, then iterate
 - find a use case for use effect
-- [upload image](https://react-dropzone.js.org/#section-basic-example)
+- upload image
+  - [dropzone](https://react-dropzone.js.org/#section-basic-example)
+  - upload images [firebase tutorial video](https://www.youtube.com/watch?v=YOAeBSCkArA) with [github](https://github.com/machadop1407/firebase-file-upload/blob/main/src/App.js)or [firebase tutorial article](https://www.makeuseof.com/upload-files-to-firebase-using-reactjs/)
+  - dropzon in create-posts.js also demonstrates the power of usecallback. It allows for moving between components.
 
 - unit testing, integration testing, end-to-end testing, maybe TDD?
 - what is useSWR?
+- what is useContext
+- what is useCallback
