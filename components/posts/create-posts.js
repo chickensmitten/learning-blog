@@ -2,10 +2,11 @@ import DropZone from "@components/layout/shared/dropzone";
 import DropZoneShowImages from "@components/layout/shared/dropzone-show-images";
 import { useCallback, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
-import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
+import { connectStorageEmulator, getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import slugify from "slugify";
 import { v4 } from "uuid";
 import {firebaseStorage} from "lib/firebase-storage";
+import { useRouter } from "next/router";
 
 async function sendPostData(postDetails) {
   const response = await fetch("/api/posts", {
@@ -21,6 +22,7 @@ async function sendPostData(postDetails) {
   if (!response.ok) {
     throw new Error(data.message || "something went wrong");
   }
+  return data.post;
 }
 
 function CreatePostForm() {
@@ -29,6 +31,7 @@ function CreatePostForm() {
   const [images, setImages] = useState([]);
   const [uploadedImages, setUploadedImages] = useState([]);
   const [percent, setPercent] = useState(0);
+  const router = useRouter();
 
   const onDrop = useCallback((acceptedFiles) => {
     acceptedFiles.map((file) => {
@@ -43,10 +46,8 @@ function CreatePostForm() {
 
       // (1) upload to firebase
       const imageSlug = slugify(file.name)
-      
-      console.log(firebaseStorage)
 
-      const imageRef = ref(firebaseStorage, `blog-images/${imageSlug + v4()}`);
+      const imageRef = ref(firebaseStorage, `blog-images/${imageSlug + "-" + v4()}`);
       const uploadTask = uploadBytesResumable(imageRef, file);
 
       uploadTask.on(
@@ -56,21 +57,17 @@ function CreatePostForm() {
             (snapshot.bytesTransferred / snapshot.totalBytes) * 100
           );
 
-          // update progress
+          // update progress, percent not used yet
           setPercent(percent);
         },
         (err) => console.log(err),
         () => {
           // download url
           getDownloadURL(uploadTask.snapshot.ref).then((url) => {
-            console.log(url);
-            // (2) get back response
-            // (3) push into setUploadedImages array
+            setUploadedImages(oldArray => [...oldArray, url])
           });
         }
       );
-      
-      
 
       reader.readAsDataURL(file);
       return file;
@@ -81,21 +78,21 @@ function CreatePostForm() {
     setEnteredSubject("");
     setEnteredPreview("");
     setImages([]);
+    setUploadedImages([]);
   }
 
   async function sendMessageHandler(event) {
     event.preventDefault(); //prevent reload of page
     try {
-
-      // // (4) add in setUploadedImages array
-      // // must include images url for mongoDB
-      // await sendPostData({
-      //   subject: enteredSubject,
-      //   preview: enteredPreview,
-      // });
-      // clearForm();   
-      // toast.success("Post Created Successfully!")
-
+      const newPost = await sendPostData({
+        subject: enteredSubject,
+        preview: enteredPreview,
+        uploadedImages: uploadedImages,
+      });
+      clearForm();
+      console.log(newPost.slug)
+      router.push(`/posts/${newPost.slug}`);
+      toast.success("Post Created Successfully!")
     } catch (error) {
       // there could be a problem where if the images aren't tied to mongodb, we should delete it
       // else we'll have too many images sitting in firebase

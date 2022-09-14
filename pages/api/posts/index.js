@@ -11,12 +11,13 @@ export async function getAllPosts() {
 
 async function handler(req, res) {
   if (req.method === "POST") {
-    const { subject, preview } = req.body;
-    const time = new Date().toLocaleTimeString()
-    const datetime = new Date()
-    const slug = slugify(subject)
-    const sender = "Gloria Roberston"
-    
+    const { subject, preview, uploadedImages } = req.body;
+    const time = new Date().toLocaleTimeString();
+    const datetime = new Date();
+    const slug = slugify(subject);
+    const sender = "Gloria Roberston";
+    const images = uploadedImages;
+
     const newPost = {
       subject,
       preview,
@@ -24,6 +25,7 @@ async function handler(req, res) {
       sender,
       time,
       datetime,
+      images,
     };
 
     let client;
@@ -50,7 +52,7 @@ async function handler(req, res) {
 
     return res
       .status(201)
-      .json({ message: "Successfully stored message!", message: newPost });
+      .json({ message: "Successfully stored message!", post: newPost });
   }
 
   if (req.method === "GET") {

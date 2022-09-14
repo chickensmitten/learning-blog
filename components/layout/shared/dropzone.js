@@ -11,7 +11,6 @@ function DropZone({ onDrop, accept}) {
     getRootProps,
     getInputProps,
     isDragActive,
-    acceptedFiles,
   } = useDropzone({
     accept,
     onDrop,
@@ -23,13 +22,6 @@ function DropZone({ onDrop, accept}) {
     }),
     [isDragActive]
   );
-
-
-  const files = acceptedFiles.map((file) => (
-    <li key={file.path}>
-      {file.path} - {file.size} bytes
-    </li>
-  ));
 
   return (
     <Fragment>
@@ -83,9 +75,6 @@ function DropZone({ onDrop, accept}) {
             <p className="text-xs text-gray-500">PNG, JPG, GIF up to 10MB</p>
           </div>
         </div>
-        <aside>
-          <p>{files}</p>
-        </aside>
       </div>
     </Fragment>
   );
