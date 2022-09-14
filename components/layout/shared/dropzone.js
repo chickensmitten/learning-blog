@@ -12,7 +12,10 @@ function DropZone({ onDrop, accept}) {
     getInputProps,
     isDragActive,
   } = useDropzone({
-    accept,
+    accept: {
+      'image/png': ['.png'],
+      'image/jpeg': ['.jpg', '.jpeg'],
+    },
     onDrop,
   });
 

@@ -27,25 +27,30 @@ added @imports into styles/globals.css
 @tailwind utilities;
 ```
 
-## Next Learning List
-
+## Completed
 - authentication
   Google Authentication: https://dev.to/ndom91/adding-authentication-to-an-existing-serverless-next-js-app-in-no-time-with-nextauth-js-192h
   Magic Link Email Authentication: https://vercel.com/guides/add-auth-to-nextjs-with-magic
-  - Not signed in user cannot create article from api, nor access create article page
+- upload image
+  - [dropzone](https://react-dropzone.js.org/#section-basic-example)
+  - upload images [firebase tutorial video](https://www.youtube.com/watch?v=YOAeBSCkArA) with [github](https://github.com/machadop1407/firebase-file-upload/blob/main/src/App.js)or [firebase tutorial article](https://www.makeuseof.com/upload-files-to-firebase-using-reactjs/)
+  - dropzone in create-posts.js also demonstrates the power of usecallback. It allows for moving between components.
+- create posts
+- edit posts
+- limit image type
 
-- posts, create, edit, delete
+
+
+## Next Learning List
+- Not signed in user cannot create article from api, nor access create article page
+- edit and delete post with images
+- limit image size
 - Mongoose: forces schema. Will be useful
 - API: axios vs fetch
   - refactor API calls like portfolio-sy
 - Infinite scrolling for posts pagination: find() with forEach(). limit 2, then iterate
-- find a use case for use effect
-- upload image
-  - [dropzone](https://react-dropzone.js.org/#section-basic-example)
-  - upload images [firebase tutorial video](https://www.youtube.com/watch?v=YOAeBSCkArA) with [github](https://github.com/machadop1407/firebase-file-upload/blob/main/src/App.js)or [firebase tutorial article](https://www.makeuseof.com/upload-files-to-firebase-using-reactjs/)
-  - dropzon in create-posts.js also demonstrates the power of usecallback. It allows for moving between components.
-
 - unit testing, integration testing, end-to-end testing, maybe TDD?
 - what is useSWR?
 - what is useContext
 - what is useCallback
+- firebase permission settings

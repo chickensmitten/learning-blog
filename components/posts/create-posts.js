@@ -90,7 +90,6 @@ function CreatePostForm() {
         uploadedImages: uploadedImages,
       });
       clearForm();
-      console.log(newPost.slug)
       router.push(`/posts/${newPost.slug}`);
       toast.success("Post Created Successfully!")
     } catch (error) {
@@ -149,7 +148,7 @@ function CreatePostForm() {
                 </div>
               </div>
 
-              <DropZone onDrop={onDrop} accept={"image/*"} />
+              <DropZone onDrop={onDrop} />
               <DropZoneShowImages images={images} />
 
             </div>
