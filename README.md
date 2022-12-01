@@ -1,4 +1,5 @@
-# Learning Blog
+# Learning NextJS with a Blog
+- Complete list of learning nextJS from start to finish
 
 Basic Running Script
 ```
@@ -51,6 +52,6 @@ added @imports into styles/globals.css
 - Infinite scrolling for posts pagination: find() with forEach(). limit 2, then iterate
 - unit testing, integration testing, end-to-end testing, maybe TDD?
 - what is useSWR?
-- what is useContext
+- what is useContext, learn from Jerga
 - what is useCallback
 - firebase permission settings
