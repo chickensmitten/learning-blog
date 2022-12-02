@@ -51,7 +51,7 @@ added @imports into styles/globals.css
   - refactor API calls like portfolio-sy
 - Infinite scrolling for posts pagination: find() with forEach(). limit 2, then iterate
 - unit testing, integration testing, end-to-end testing, maybe TDD?
-- what is useSWR?
-- what is useContext, learn from Jerga
+- what is useSWR. Refer to Udemy Max's React & NextJS lesson 114
+- what is useContext. it is similar to helper functions. Refer to Udemy Max's React & NextJS lesson 46.
 - what is useCallback
 - firebase permission settings
