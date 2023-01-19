@@ -70,6 +70,9 @@ npm install @headlessui/react @heroicons/react
 - Infinite scrolling for posts pagination: find() with forEach(). limit 2, then iterate
 - unit testing, integration testing, end-to-end testing, maybe TDD?
 - Use MongoDB not firebase because firebase is closed.
+- what is useSWR. Refer to Udemy Max's React & NextJS lesson 114
+- what is useContext. it is similar to helper functions. Refer to Udemy Max's React & NextJS lesson 46.
+- what is useCallback
 
 # Anatomy of a NextJS app
 Below highlights the important anatomy
